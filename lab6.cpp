@@ -9,15 +9,14 @@ int main()
     std::cout << "Wektor losowych liczb calkowitych z przedzialu [0, 10]\n";
     for (auto it = vec.begin(); it != vec.end(); it++)
         std::cout << *it << ",\t";
-    std::cout << "\n";
+    std::cout << "\nRozmiar wektora to: " << vec.size() << std::endl;
 
-    if (find(vec.begin(), vec.end(), 7) != vec.end())
-        std::sort(vec.begin(), find(vec.begin(), vec.end(), 7));
-    else
-        std::sort(vec.begin(), vec.end());
-    std::cout << "\nPo sortowaniu elementow znalezionych przed liczba 7\n";
-    for (auto i = vec.begin(); i != vec.end(); ++i)
-        std::cout << *i << ",\t";
+    std::cout << "\nKasowanie elementow wektora o wartosci 3\n";
+    vec.erase(std::remove(vec.begin(), vec.end(), 3), vec.end());
+
+    for (auto it = vec.begin(); it != vec.end(); ++it)
+        std::cout << *it << ",\t";
+    std::cout << "\nRozmiar zredukowanego wektora to: " << vec.size() << std::endl;
 
     puts("\nOstatnia linijka kodu!");
 }
