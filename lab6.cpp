@@ -1,9 +1,11 @@
 #include "make_random_vector.hpp"
 #include <iostream>
 
+int a;
+
 struct myclass
 {
-    bool operator()(int i) { return (i > 7); }
+    bool operator()(int i) { return (i > a); }
 } isBigger;
 
 int main()
@@ -18,8 +20,11 @@ int main()
     for (auto it = vec.begin(); it != vec.end(); it++)
         std::cout << *it << ",\t";
 
+    std::cout << "\n\nPodaj liczbe calkowita\n";
+    std::cin >> a;
+
     int licznik = count_if(vec.begin(), vec.end(), isBigger);
-    std::cout << "\n\nLiczba wieksza niz 7 wystepuje " << licznik << " razy\n";
+    std::cout << "\nLiczba wieksza niz " << a << " wystepuje " << licznik << " razy\n";
 
     puts("\nOstatnia linijka kodu!");
 }
