@@ -4,19 +4,20 @@
 
 int main()
 {
-    std::vector< double > vec1 = {3.14, 1.01, 4.2};
-    std::vector< double > vec2 = {6.9, 1.23, 3.11};
-    double                init = 0.0;
+    std::vector< int > vec;
+    vec = make_random_vector(10, 0, 10);
+    std::cout << "Wektor losowych liczb calkowitych z przedzialu [0, 10]\n";
+    for (auto it = vec.begin(); it != vec.end(); it++)
+        std::cout << *it << ",\t";
+    std::cout << "\n";
 
-    std::cout << "Iloczyn skalarny wektorow: [ ";
-    for (auto i = vec1.begin(); i != vec1.end(); ++i)
-        std::cout << *i << " ";
-    std::cout << "] oraz [ ";
-    for (auto i = vec2.begin(); i != vec2.end(); ++i)
-        std::cout << *i << " ";
-    std::cout << "]\n";
-    std::cout << "wynosi: " << std::inner_product(vec1.begin(), vec1.end(), vec2.begin(), init)
-              << std::endl;
+    if (find(vec.begin(), vec.end(), 7) != vec.end())
+        std::sort(vec.begin(), find(vec.begin(), vec.end(), 7));
+    else
+        std::sort(vec.begin(), vec.end());
+    std::cout << "\nPo sortowaniu elementow znalezionych przed liczba 7\n";
+    for (auto i = vec.begin(); i != vec.end(); ++i)
+        std::cout << *i << ",\t";
 
     puts("\nOstatnia linijka kodu!");
 }
