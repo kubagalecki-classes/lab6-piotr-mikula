@@ -1,24 +1,20 @@
 #include "make_random_vector.hpp"
+#include <algorithm>
 #include <iostream>
 
 int main()
 {
-    int                big;
-    std::vector< int > vec;
-    vec = make_random_vector(10, 0, 10);
-    for (auto it = vec.begin(); it != vec.end(); it++)
-        std::cout << *it << ",\t";
+    std::string haslo;
 
-    std::cout << "\n\nSortowanie rosnaco wartosci w wektorze\n";
-    std::sort(vec.begin(), vec.end());
-    for (auto it = vec.begin(); it != vec.end(); it++)
-        std::cout << *it << ",\t";
+    std::cout << "Podaj ciag znakow: ";
+    std::cin >> haslo;
 
-    std::cout << "\n\nPodaj liczbe calkowita\n";
-    std::cin >> big;
-
-    int licznik = count_if(vec.begin(), vec.end(), [&](int i) { return (i > big); });
-    std::cout << "\nLiczba wieksza niz " << big << " wystepuje " << licznik << " razy\n";
+    auto x = std::adjacent_find(haslo.begin(), haslo.end());
+    
+    if (*x != 0)
+        std::cout << "1 - Wystepuja dwa te same znaki pod rzad\n";
+    else
+        std::cout << "0 - Nie wystepuja dwa te same znaki pod rzad\n";
 
     puts("\nOstatnia linijka kodu!");
 }
