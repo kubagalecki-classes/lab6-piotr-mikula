@@ -1,19 +1,24 @@
 #include "make_random_vector.hpp"
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 
 int main()
 {
-    std::vector< int > vec;
-    vec = make_random_vector(8, -1, 1);
-    std::cout << "Wektor losowych liczb calkowitych z przedzialu [0, 10]\n";
+    std::vector< double > vec;
+    vec = make_random_vector(5, -1.0, 1.0);
+    std::cout << "Wektor losowych liczb zmiennoprzecinkowych z przedzialu [0, 10]\n";
     for (auto it = vec.begin(); it != vec.end(); it++)
         std::cout << *it << ",\t";
 
-    if (std::any_of(vec.begin(), vec.end(), [](int i) { return i > 0.9; }))
-        std::cout << "\n\nPrzynajmniej jeden element wektora jest wieksza niz 0.9.\n";
-    else
-        std::cout << "\n\nNie istnieje element wektora wiekszy niz 0.9.\n";
+    std::vector< double > vec_sin;
+    vec_sin.resize(vec.size());
 
-    puts("\nOstatnia linijka kodu!");
+    std::transform(vec.begin(), vec.end(), vec_sin.begin(), [](double i) { return sin(i); });
+
+    std::cout << "\n\nWektor sinusow wartosci z pierwszego wektora\n";
+    for (auto it = vec_sin.begin(); it != vec_sin.end(); it++)
+        std::cout << *it << ",\t";
+
+    puts("\n\nOstatnia linijka kodu!");
 }
